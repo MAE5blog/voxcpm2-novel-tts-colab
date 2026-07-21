@@ -1,0 +1,6 @@
+# Keep Colab's preinstalled PyTorch/CUDA stack. These are the Python packages
+# required by the repository notebook and helper module.
+voxcpm==2.0.3
+pypdf>=4.0
+soundfile>=0.12
+huggingface_hub>=0.24

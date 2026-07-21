@@ -1,0 +1,37 @@
+# Python and notebook runtime state
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.coverage
+.ipynb_checkpoints/
+
+# Local packages and exports
+VoxCPM2_Novel_TTS_Colab_bundle.zip
+*.zip
+*.tar
+*.gz
+
+# Never publish reference voices, source books, or rendered audio
+*.flac
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.ogg
+*.opus
+*.m4b
+inputs/
+outputs/
+jobs/
+artifacts/
+models/
+hf-cache/
+
+# Secrets and machine-specific configuration
+.env
+.env.*
+*.pem
+*.key
+secrets/
+local_settings.py
