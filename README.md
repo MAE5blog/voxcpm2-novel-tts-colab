@@ -4,10 +4,12 @@
 
 面向单旁白、长篇小说的 Google Colab 工作流：代码从本仓库克隆，小说、参考音频、任务清单和成品默认留在 Google Drive。免费 Colab 断连或运行时被回收后，重新加载代码和模型即可从 `manifest.json` 继续；若 Drive 临时挂载失败，也可以切换为 Colab 本地存储完成一次试听（不会保留）。
 
+2026-07-21 已在免费 Tesla T4 上完整验证：Python 3.12.13、PyTorch 2.11.0+cu128、`voxcpm==2.0.3`，模型以 FP16/CUDA 加载；仓库原创示例识别为 9 章、204 段，首段 96 字生成约 22 秒音频。
+
 ## 使用方式
 
 1. 点击上方 **Open in Colab**，在“运行时 → 更改运行时类型”选择 GPU（免费账户常见为 T4，但不保证可分配）。
-2. 正式长书保持 `STORAGE_MODE = "drive"`，在 Google Drive 新建或使用 `MyDrive/VoxCPM2_Novel/inputs/`，把已获授权的参考音频放进去。首次测试默认文件名是 `古龙评书（干声）.flac`；它不会进入 GitHub。若 Drive 挂载报错，只做试听时可将该项改为 `"content"`，再通过 Colab 左侧 **Files** 手动放入 `/content/VoxCPM2_Novel/inputs/`。该模式只允许首段试听，输入和成品会在运行时结束后清除。
+2. 正式长书保持 `STORAGE_MODE = "drive"`，在 Google Drive 新建或使用 `MyDrive/VoxCPM2_Novel/inputs/`，把已获授权的参考音频放进去。首次测试默认文件名是 `古龙评书（干声）.flac`；它不会进入 GitHub。若 Drive 挂载报错，只做试听时可将该项改为 `"content"`。通过 Colab 左侧 **Files** 上传时，文件可以直接放到默认 `/content` 根目录，第 5 步会按文件名复制到当前 `inputs/`。该模式只允许首段试听，输入和成品会在运行时结束后清除。
 3. 依次运行 Notebook。代码单元会克隆或同步本仓库，绝不会要求上传 `voxcpm_novel.py`。
 4. 只修改 Notebook 的存储模式和“输入与任务配置”单元：可使用仓库附带的原创长文本，或把 `BOOK_SOURCE` 改为 `"storage"` 读取私有的 TXT / Markdown / EPUB / 有文字层 PDF。
 5. 先运行“一段试听”，确认音色、速度和断句后，再运行全书生成与 M4B 导出。
