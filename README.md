@@ -7,7 +7,7 @@
 ## 使用方式
 
 1. 点击上方 **Open in Colab**，在“运行时 → 更改运行时类型”选择 GPU（免费账户常见为 T4，但不保证可分配）。
-2. 正式长书保持 `STORAGE_MODE = "drive"`，在 Google Drive 新建或使用 `MyDrive/VoxCPM2_Novel/inputs/`，把已获授权的参考音频放进去。首次测试默认文件名是 `古龙评书（干声）.flac`；它不会进入 GitHub。若 Drive 挂载报错，只做试听时可将该项改为 `"content"`，输入和成品会在运行时结束后清除。
+2. 正式长书保持 `STORAGE_MODE = "drive"`，在 Google Drive 新建或使用 `MyDrive/VoxCPM2_Novel/inputs/`，把已获授权的参考音频放进去。首次测试默认文件名是 `古龙评书（干声）.flac`；它不会进入 GitHub。若 Drive 挂载报错，只做试听时可将该项改为 `"content"`，再通过 Colab 左侧 **Files** 手动放入 `/content/VoxCPM2_Novel/inputs/`。该模式只允许首段试听，输入和成品会在运行时结束后清除。
 3. 依次运行 Notebook。代码单元会克隆或同步本仓库，绝不会要求上传 `voxcpm_novel.py`。
 4. 只修改 Notebook 的存储模式和“输入与任务配置”单元：可使用仓库附带的原创长文本，或把 `BOOK_SOURCE` 改为 `"storage"` 读取私有的 TXT / Markdown / EPUB / 有文字层 PDF。
 5. 先运行“一段试听”，确认音色、速度和断句后，再运行全书生成与 M4B 导出。
@@ -16,7 +16,7 @@
 
 ## 仓库内容
 
-- `VoxCPM2_Novel_TTS_Colab.ipynb`：中文 Colab 教程和唯一配置入口。
+- `VoxCPM2_Novel_TTS_Colab.ipynb`：中文 Colab 教程，包含存储模式与任务参数两个明确配置点。
 - `voxcpm_novel.py`：导入、中文切分、任务清单、断点续跑、OOM 二分、合并和 M4B 导出。
 - `examples/generated_long_demo.txt`：原创长文本测试稿（9 章、约 8,583 个汉字）。
 - `tests/test_voxcpm_novel.py`：不需要 GPU、VoxCPM 或 ffmpeg 的核心逻辑测试。
