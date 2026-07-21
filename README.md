@@ -2,14 +2,14 @@
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MAE5blog/voxcpm2-novel-tts-colab/blob/main/VoxCPM2_Novel_TTS_Colab.ipynb)
 
-面向单旁白、长篇小说的 Google Colab 工作流：代码从本仓库克隆，小说、参考音频、任务清单和成品留在 Google Drive。免费 Colab 断连或运行时被回收后，重新加载代码和模型即可从 `manifest.json` 继续。
+面向单旁白、长篇小说的 Google Colab 工作流：代码从本仓库克隆，小说、参考音频、任务清单和成品默认留在 Google Drive。免费 Colab 断连或运行时被回收后，重新加载代码和模型即可从 `manifest.json` 继续；若 Drive 临时挂载失败，也可以切换为 Colab 本地存储完成一次试听（不会保留）。
 
 ## 使用方式
 
 1. 点击上方 **Open in Colab**，在“运行时 → 更改运行时类型”选择 GPU（免费账户常见为 T4，但不保证可分配）。
-2. 在 Google Drive 新建或使用 `MyDrive/VoxCPM2_Novel/inputs/`，把已获授权的参考音频放进去。首次测试默认文件名是 `古龙评书（干声）.flac`；它不会进入 GitHub。
+2. 正式长书保持 `STORAGE_MODE = "drive"`，在 Google Drive 新建或使用 `MyDrive/VoxCPM2_Novel/inputs/`，把已获授权的参考音频放进去。首次测试默认文件名是 `古龙评书（干声）.flac`；它不会进入 GitHub。若 Drive 挂载报错，只做试听时可将该项改为 `"content"`，输入和成品会在运行时结束后清除。
 3. 依次运行 Notebook。代码单元会克隆或同步本仓库，绝不会要求上传 `voxcpm_novel.py`。
-4. 只修改 Notebook 的“输入与任务配置”单元：可使用仓库附带的原创长文本，或改成 Drive 中自己的 TXT / Markdown / EPUB / 有文字层 PDF。
+4. 只修改 Notebook 的存储模式和“输入与任务配置”单元：可使用仓库附带的原创长文本，或把 `BOOK_SOURCE` 改为 `"storage"` 读取私有的 TXT / Markdown / EPUB / 有文字层 PDF。
 5. 先运行“一段试听”，确认音色、速度和断句后，再运行全书生成与 M4B 导出。
 
 以后更新项目代码，只需提交到本仓库；在 Colab 重新运行“获取/同步项目代码”单元即可。输入文件、音频、模型缓存和生成结果均不应提交。
